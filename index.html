@@ -3,18 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <title>AR.js + GLB + Marker Check</title>
+    
+    <!-- A-Frame dan AR.js -->
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
+    
+    <!-- Style untuk hapus margin dan fullscreen -->
     <style>
-      body, html { margin: 0; padding: 0; overflow: hidden; }
+      body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
+      a-scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     </style>
   </head>
+
   <body>
-    <a-scene embedded arjs="debugUIEnabled: true;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <!-- Load model -->
       <a-assets>
         <a-asset-item id="modelGLB" src="models/model.glb"></a-asset-item>
       </a-assets>
 
+      <!-- Marker Hiro -->
       <a-marker id="markerHiro" preset="hiro">
         <a-gltf-model 
           src="#modelGLB"
@@ -24,15 +32,21 @@
         ></a-gltf-model>
       </a-marker>
 
+      <!-- Kamera AR -->
       <a-entity camera></a-entity>
     </a-scene>
 
+    <!-- Script untuk alert saat marker ditemukan -->
     <script>
       window.addEventListener('DOMContentLoaded', () => {
         const marker = document.querySelector("#markerHiro");
 
         marker.addEventListener("markerFound", () => {
           alert("✅ Marker Hiro Terdeteksi!");
+        });
+
+        marker.addEventListener("markerLost", () => {
+          console.log("❌ Marker Hiro Hilang");
         });
       });
     </script>
