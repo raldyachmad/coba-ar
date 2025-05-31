@@ -5,25 +5,15 @@
     <title>Coba </title>
     <style>
       body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
-      .a-loader-title{
-        display: none !important;
-      }
-
     </style>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@4.0.3/dist/aframe-gesture-detector.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@4.0.3/dist/aframe-super-hands.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   
   <body>
-    <div id="loading" class="bg-black flex flex-col items-center justify-center h-dvh w-full fixed top-0 left-0 p-4 text-white">
-      <h1 class="text-xl font-medium text-center">Load Asset Dulu...</h1>
-      <img src="loading.gif" alt="" class="w-full">
-    </div>
     <a-scene embedded arjs="debugUIEnabled: false;">
-
       <!-- Aset: obj + mtl -->
       <a-assets>
         <a-asset-item id="botol-glb" src="models/botol.glb"></a-asset-item>
@@ -66,11 +56,6 @@
         </a-marker>
         <a-entity camera></a-entity>
       </a-scene>
-    <script>
-      const scene = document.querySelector("a-scene");
-      scene.addEventListener("loaded", () => {
-        document.getElementById("loading").classList.add('hidden');
-      });
-    </script>
+    
   </body>
 </html>
