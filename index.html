@@ -5,23 +5,21 @@
     <title>AR.js + OBJ + Drag & Rotate</title>
 
     <!-- 1) A-Frame & AR.js -->
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
-
-  <style>
+    
+    <style>
       body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
       a-scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     </style>
   </head>
-
+  
   <body>
-    <a-scene embedded arjs="debugUIEnabled: false;" gesture-detector>
+    <a-scene embedded arjs="debugUIEnabled: false;">
       <!-- Aset: obj + mtl -->
       <a-assets>
         <a-asset-item id="model-obj" src="models/model.obj"></a-asset-item>
         <a-asset-item id="model-mtl" src="models/model.mtl"></a-asset-item>
       </a-assets>
-
+      
       <!-- Marker Hiro -->
       <a-marker preset="hiro">
         <!--
@@ -37,10 +35,12 @@
           scale="0.06 0.06 0.06"
           position="0 0 0"
           rotation="180 0 0"
-        ></a-obj-model>
-      </a-marker>
-
-      <a-entity camera></a-entity>
-    </a-scene>
+          ></a-obj-model>
+        </a-marker>
+        
+        <a-entity camera></a-entity>
+      </a-scene>
+      <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
   </body>
 </html>
