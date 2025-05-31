@@ -14,20 +14,18 @@
     <a-scene embedded arjs="debugUIEnabled: false;">
       <!-- Aset: obj + mtl -->
       <a-assets>
-        <a-asset-item id="model-obj" src="models/mesh.obj"></a-asset-item>
-        <a-asset-item id="model-mtl" src="models/mesh.mtl"></a-asset-item>
+        <a-asset-item id="model-glb" src="models/mesh.glb"></a-asset-item>
       </a-assets>
       
       <!-- Marker Hiro -->
       <a-marker preset="hiro">
-        <a-obj-model
+        <a-gltf-model
           id="myModel"
-          src="#model-obj"
-          mtl="#model-mtl"
+          src="#model-glb"
           scale="2 2 2"
           position="0 0 0"
           rotation="180 0 0"
-          ></a-obj-model>
+          ></a-gltf-model>
         </a-marker>
         
         <a-entity camera></a-entity>
