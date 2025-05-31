@@ -2,13 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AR.js + OBJ + Drag & Rotate</title>
-
-    <!-- 1) A-Frame & AR.js -->
-    
+    <title>Coba </title>
     <style>
-      body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
-      a-scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+      body, html { margin: 0; padding: 0; overflow: hidden; height: 100dvh; }
     </style>
   </head>
   
@@ -22,12 +18,6 @@
       
       <!-- Marker Hiro -->
       <a-marker preset="hiro">
-        <!--
-          Tambahkan:
-            - draggable    → untuk menggeser posisi model (drag)
-            - gesture-handler → untuk deteksi gesture (pinch/rotate)
-            - class="clickable" → agar super-hands menganggap entitas ini interaktif
-        -->
         <a-obj-model
           id="myModel"
           src="#model-obj"
