@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AR.js with GLB Model</title>
+    <meta charset="utf-8" />
+    <title>AR.js + GLB + Marker Check</title>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
     <style>
@@ -9,20 +10,49 @@
     </style>
   </head>
   <body>
-    <a-scene embedded arjs>
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; debugUIEnabled: true;"
+    >
+      <!-- Assets -->
       <a-assets>
         <a-asset-item id="modelGLB" src="models/model.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Cahaya -->
+      <!-- Pencahayaan -->
+      <a-entity light="type: ambient; color: #fff; intensity: 0.5"></a-entity>
       <a-entity light="type: directional; color: #fff; intensity: 1" position="1 1 1"></a-entity>
 
-      <!-- Marker -->
-      <a-marker preset="hiro">
-        <a-gltf-model src="#modelGLB" scale="1 1 1" position="0 0 0"></a-gltf-model>
+      <!-- Marker dengan ID agar bisa dipanggil lewat JS -->
+      <a-marker id="markerHiro" preset="hiro">
+        <a-entity 
+          gltf-model="#modelGLB"
+          scale="0.5 0.5 0.5"
+          rotation="0 180 0"
+          position="0 0 0"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
+        ></a-entity>
       </a-marker>
 
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      // Tunggu sampai DOM siap
+      window.addEventListener('DOMContentLoaded', () => {
+        const marker = document.querySelector("#markerHiro");
+
+        // Saat marker terdeteksi
+        marker.addEventListener("markerFound", () => {
+          alert("✅ Marker Hiro Terdeteksi!");
+        });
+
+        // Saat marker hilang dari pandangan kamera
+        marker.addEventListener("markerLost", () => {
+          console.log("Marker Hiro hilang.");
+        });
+      });
+    </script>
   </body>
 </html>
