@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Coba </title>
+    <style>
+      body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@4.0.3/dist/aframe-gesture-detector.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@4.0.3/dist/aframe-super-hands.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  
+  <body>
+    <div id="loading" class="bg-black flex flex-col items-center justify-center h-dvh w-full fixed top-0 left-0 p-4 text-white">
+      <h1 class="text-xl font-medium text-center">Load Asset Dulu...</h1>
+      <img src="loading.gif" alt="" class="w-full">
+    </div>
+    <a-scene embedded arjs="debugUIEnabled: false;">
+      <!-- Aset: obj + mtl -->
+      <a-assets>
+        <a-asset-item id="botol-glb" src="models/botol.glb"></a-asset-item>
+        <a-asset-item id="meja-glb" src="models/meja.glb"></a-asset-item>
+        <a-asset-item id="tengkorak-obj" src="models/tengkorak.obj"></a-asset-item>
+        <a-asset-item id="tengkorak-mtl" src="models/tengkorak.mtl"></a-asset-item>
+      </a-assets>
+      
+      <!-- Marker Hiro -->
+        <a-marker type="pattern" url="markers/meja.patt">
+            <a-gltf-model
+            id="meja"
+            src="#meja-glb"
+            scale="2 2 2"
+            position="0 0 0"
+            rotation="0 0 0"
+            >
+            </a-gltf-model>
+        </a-marker>
+        <a-marker type="pattern" url="markers/botol.patt">
+            <a-gltf-model
+            id="botol"
+            src="#botol-glb"
+            scale="2 2 2"
+            position="0 0 0"
+            rotation="0 0 0"
+            >
+            </a-gltf-model>
+        </a-marker>
+
+        <a-marker type="pattern" url="markers/tengkorak.patt">
+        <a-obj-model
+          id="tengkorak"
+          src="#tengkorak-obj"
+          mtl="#tengkorak-mtl"
+          scale="0.06 0.06 0.06"
+          position="0 0 0"
+          rotation="180 0 0"
+          ></a-obj-model>
+        </a-marker>
+        <a-entity camera></a-entity>
+      </a-scene>
+    <script>
+      const scene = document.querySelector("a-scene");
+      scene.addEventListener("loaded", () => {
+        document.getElementById("loading").classList.add('hidden');
+      });
+    </script>
+  </body>
+</html>
