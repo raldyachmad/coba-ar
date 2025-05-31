@@ -5,9 +5,9 @@
     <title>Coba </title>
     <style>
       body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
-      #arjsDebugUIContainer {
-  display: none !important;
-}
+      .a-loader-title{
+        display: none !important;
+      }
 
     </style>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
@@ -68,23 +68,10 @@
         <a-entity camera></a-entity>
       </a-scene>
     <script>
-      const loadingScreen = document.getElementById("loading");
-  const models = [
-    document.querySelector("#botol"),
-    document.querySelector("#meja"),
-    document.querySelector("#tengkorak")
-  ];
-
-  let loadedCount = 0;
-
-  models.forEach((model) => {
-    model.addEventListener("model-loaded", () => {
-      loadedCount++;
-      if (loadedCount === models.length) {
-        loadingScreen.classList.add("hidden");
-      }
-    });
-  });
+      const scene = document.querySelector("a-scene");
+      scene.addEventListener("loaded", () => {
+        document.getElementById("loading").classList.add('hidden');
+      });
     </script>
   </body>
 </html>
