@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AR.js + GLB + Gesture</title>
+    <title>AR.js + OBJ + Gesture</title>
 
-    <!-- A-Frame & AR.js -->
+    <!-- A-Frame dan AR.js -->
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
 
-    <!-- Gesture support -->
+    <!-- Gesture handler -->
     <script src="https://cdn.jsdelivr.net/gh/wmurphyrd/aframe-super-hands-component@4.0.5/dist/aframe-super-hands.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-gesture-detector@3.3.0/dist/gesture-detector.min.js"></script>
@@ -19,31 +19,27 @@
   </head>
 
   <body>
-    <a-scene
-      embedded
-      arjs="debugUIEnabled: false;"
-      gesture-detector
-    >
-      <!-- Asset -->
+    <a-scene embedded arjs="debugUIEnabled: false;" gesture-detector>
+
+      <!-- Aset -->
       <a-assets>
-          <a-asset-item id="modelObj" src="models/model.obj"></a-asset-item>
-          <a-asset-item id="modelMtl" src="models/model.mtl"></a-asset-item>
+        <a-asset-item id="model-obj" src="models/model.obj"></a-asset-item>
+        <a-asset-item id="model-mtl" src="models/model.mtl"></a-asset-item>
       </a-assets>
 
       <!-- Marker Hiro -->
-      <a-marker id="markerHiro" preset="hiro">
-        <a-gltf-model
-          src="#modelObj"
-          mtl="#modelMtl"
+      <a-marker preset="hiro">
+        <a-obj-model
+          src="#model-obj"
+          mtl="#model-mtl"
           scale="0.2 0.2 0.2"
           position="0 0 0"
           rotation="0 180 0"
           class="clickable"
           gesture-handler
-        ></a-gltf-model>
+        ></a-obj-model>
       </a-marker>
 
-      <!-- Kamera -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
