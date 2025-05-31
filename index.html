@@ -27,12 +27,14 @@
       <!-- Asset -->
       <a-assets>
         <a-asset-item id="modelGLB" src="models/model.glb"></a-asset-item>
+          <a-asset-item id="modelMtl" src="models/model.mtl"></a-asset-item>
       </a-assets>
 
       <!-- Marker Hiro -->
       <a-marker id="markerHiro" preset="hiro">
         <a-gltf-model
           src="#modelGLB"
+          mtl="#modelMtl"
           scale="0.2 0.2 0.2"
           position="0 0 0"
           rotation="0 180 0"
