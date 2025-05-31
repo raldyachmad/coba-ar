@@ -6,39 +6,35 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
     <style>
-      body, html { margin: 0; padding: 0; overflow: hidden;}
-
+      body, html { margin: 0; padding: 0; overflow: hidden; }
     </style>
   </head>
   <body>
-    <a-scene
-      embedded
-      vr-mode-ui="enabled: false"
-      arjs="sourceType: webcam; debugUIEnabled: true;"
-    >
-      <!-- Assets -->
+    <a-scene embedded arjs="debugUIEnabled: true;">
       <a-assets>
         <a-asset-item id="modelGLB" src="models/model.glb"></a-asset-item>
       </a-assets>
 
-      <!-- Pencahayaan -->
-      <a-entity light="type: ambient; color: #fff; intensity: 0.5"></a-entity>
-      <a-entity light="type: directional; color: #fff; intensity: 1" position="1 1 1"></a-entity>
-
-      <!-- Marker dengan ID agar bisa dipanggil lewat JS -->
       <a-marker id="markerHiro" preset="hiro">
-        <a-entity 
-          gltf-model="#modelGLB"
-          scale="1 1 1"
-          rotation="0 180 0"
+        <a-gltf-model 
+          src="#modelGLB"
+          scale="0.5 0.5 0.5"
           position="0 0 0"
-          animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
-        ></a-entity>
+          rotation="0 180 0"
+        ></a-gltf-model>
       </a-marker>
 
       <a-entity camera></a-entity>
     </a-scene>
 
-    
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const marker = document.querySelector("#markerHiro");
+
+        marker.addEventListener("markerFound", () => {
+          alert("✅ Marker Hiro Terdeteksi!");
+        });
+      });
+    </script>
   </body>
 </html>
