@@ -2,39 +2,46 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AR.js + GLB + Marker Check</title>
-    
-    <!-- A-Frame dan AR.js -->
+    <title>AR.js + GLB + Gesture</title>
+
+    <!-- A-Frame & AR.js -->
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
-    
-    <!-- Style untuk hapus margin dan fullscreen -->
+
+    <!-- Gesture support -->
+    <script src="https://cdn.jsdelivr.net/gh/wmurphyrd/aframe-super-hands-component@4.0.5/dist/aframe-super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-gesture-detector@3.3.0/dist/gesture-detector.min.js"></script>
+
     <style>
-      body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
-      a-scene { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+      body, html { margin: 0; padding: 0; overflow: hidden; }
     </style>
   </head>
 
   <body>
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      <!-- Load model -->
+    <a-scene
+      embedded
+      arjs="debugUIEnabled: false;"
+      gesture-detector
+    >
+      <!-- Asset -->
       <a-assets>
-        <a-asset-item id="modelObj" src="models/model.obj"></a-asset-item>
-        <a-asset-item id="modelMtl" src="models/model.mtl"></a-asset-item>
+        <a-asset-item id="modelGLB" src="models/model.glb"></a-asset-item>
       </a-assets>
 
       <!-- Marker Hiro -->
-      <a-marker preset="hiro">
-        <a-obj-model
-          src="#modelObj"
-          mtl="#modelMtl"
-          scale="0.2 0.2 0.2"
+      <a-marker id="markerHiro" preset="hiro">
+        <a-gltf-model
+          src="#modelGLB"
+          scale="0.01 0.01 0.01"
           position="0 0 0"
           rotation="0 180 0"
-        ></a-obj-model>
+          class="clickable"
+          gesture-handler
+        ></a-gltf-model>
       </a-marker>
 
-      <!-- Kamera AR -->
+      <!-- Kamera -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
