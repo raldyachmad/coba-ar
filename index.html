@@ -35,20 +35,5 @@
       <!-- Kamera AR -->
       <a-entity camera></a-entity>
     </a-scene>
-
-    <!-- Script untuk alert saat marker ditemukan -->
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const marker = document.querySelector("#markerHiro");
-
-        marker.addEventListener("markerFound", () => {
-          alert("✅ Marker Hiro Terdeteksi!");
-        });
-
-        marker.addEventListener("markerLost", () => {
-          console.log("❌ Marker Hiro Hilang");
-        });
-      });
-    </script>
   </body>
 </html>
