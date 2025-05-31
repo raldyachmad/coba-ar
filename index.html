@@ -6,10 +6,24 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
     <style>
-      body, html { margin: 0; padding: 0; overflow: hidden; }
+      body, html { margin: 0; padding: 0; overflow: hidden; position: relative;}
+      #tulisan{
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        width: 100%;
+        background-color: aliceblue;
+      }
     </style>
   </head>
   <body>
+    <div id="tulisan">
+    </div>
     <a-scene
       embedded
       vr-mode-ui="enabled: false"
@@ -28,7 +42,7 @@
       <a-marker id="markerHiro" preset="hiro">
         <a-entity 
           gltf-model="#modelGLB"
-          scale="0.5 0.5 0.5"
+          scale="1 1 1"
           rotation="0 180 0"
           position="0 0 0"
           animation="property: rotation; to: 0 360 0; loop: true; dur: 5000"
@@ -38,21 +52,6 @@
       <a-entity camera></a-entity>
     </a-scene>
 
-    <script>
-      // Tunggu sampai DOM siap
-      window.addEventListener('DOMContentLoaded', () => {
-        const marker = document.querySelector("#markerHiro");
-
-        // Saat marker terdeteksi
-        marker.addEventListener("markerFound", () => {
-          alert("✅ Marker Hiro Terdeteksi!");
-        });
-
-        // Saat marker hilang dari pandangan kamera
-        marker.addEventListener("markerLost", () => {
-          console.log("Marker Hiro hilang.");
-        });
-      });
-    </script>
+    
   </body>
 </html>
