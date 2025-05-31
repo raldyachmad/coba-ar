@@ -19,14 +19,15 @@
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
       <!-- Load model -->
       <a-assets>
-        <a-asset-item id="modelGLB" src="models/model.glb"></a-asset-item>
+        <a-asset-item id="modelObj" src="models/model.obj"></a-asset-item>
+        <a-asset-item id="modelMtl" src="models/model.mtl"></a-asset-item>
       </a-assets>
 
       <!-- Marker Hiro -->
       <a-marker id="markerHiro" preset="hiro">
         <a-gltf-model 
           src="#modelGLB"
-          scale="3 3 3"
+          scale="2 2 2"
           position="0 0 0"
           rotation="0 180 0"
         ></a-gltf-model>
