@@ -5,6 +5,10 @@
     <title>Coba </title>
     <style>
       body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
+      #arjsDebugUIContainer {
+  display: none !important;
+}
+
     </style>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
@@ -18,7 +22,9 @@
       <h1 class="text-xl font-medium text-center">Load Asset Dulu...</h1>
       <img src="loading.gif" alt="" class="w-full">
     </div>
-    <a-scene embedded arjs="debugUIEnabled: false;">
+    <!-- <a-scene embedded arjs="debugUIEnabled: false;"> -->
+    <a-scene embedded arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;">
+
       <!-- Aset: obj + mtl -->
       <a-assets>
         <a-asset-item id="botol-glb" src="models/botol.glb"></a-asset-item>
@@ -62,10 +68,23 @@
         <a-entity camera></a-entity>
       </a-scene>
     <script>
-      const scene = document.querySelector("a-scene");
-      scene.addEventListener("loaded", () => {
-        document.getElementById("loading").classList.add('hidden');
-      });
+      const loadingScreen = document.getElementById("loading");
+  const models = [
+    document.querySelector("#botol"),
+    document.querySelector("#meja"),
+    document.querySelector("#tengkorak")
+  ];
+
+  let loadedCount = 0;
+
+  models.forEach((model) => {
+    model.addEventListener("model-loaded", () => {
+      loadedCount++;
+      if (loadedCount === models.length) {
+        loadingScreen.classList.add("hidden");
+      }
+    });
+  });
     </script>
   </body>
 </html>
