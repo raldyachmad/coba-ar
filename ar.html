@@ -62,5 +62,16 @@
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const marker = document.querySelector("#waterbottle");
+
+        // Saat marker terdeteksi
+        marker.addEventListener("markerFound", () => {
+          alert("✅ Marker Hiro Terdeteksi!");
+        });
+      });
+    </script>
   </body>
 </html>
