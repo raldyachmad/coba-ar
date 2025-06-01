@@ -2,16 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AR Test</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ar-js-org@3.3.2/aframe/build/aframe-ar.min.js"></script>
+    <title>UJI COBA AR</title>
     <style>
-    body, html { margin:0; padding:0; overflow:hidden; }
+      body, html { margin: 0; padding: 0; overflow: hidden; height: 100dvh; }
+      a-scene { touch-action: none; width: 100vw; height: 100vh; }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@4.0.3/dist/aframe-gesture-detector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@4.0.3/dist/aframe-super-hands.min.js"></script>
   </head>
+  
   <body>
-    <a-scene embedded arjs="sourceType: webcam;">
+    <a-scene
+  embedded
+  arjs="sourceType: webcam; debugUIEnabled: false; cameraParametersUrl: https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/data/data/camera_para.dat"
+  vr-mode-ui="enabled: false"
+  style="width: 100vw; height: 100vh;"
+>
       <!-- Aset: obj + mtl -->
       <a-assets>
         <a-asset-item id="botol-glb" src="models/botol.glb"></a-asset-item>
