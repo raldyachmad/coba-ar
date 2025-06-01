@@ -23,7 +23,7 @@
       arjs="sourceType: webcam; facingMode: environment; debugUIEnabled: false;" style="position: absolute; width: 100vw; height: 100vh;">
       <!-- Aset: obj + mtl -->
       <a-assets>
-        <a-asset-item id="botol-glb" src="models/botol.glb"></a-asset-item>
+        <a-asset-item id="botol-glb" src="models/Waterbottle.obj"></a-asset-item>
         <a-asset-item id="meja-glb" src="models/meja.glb"></a-asset-item>
         <a-asset-item id="tengkorak-obj" src="models/tengkorak.obj"></a-asset-item>
         <a-asset-item id="tengkorak-mtl" src="models/tengkorak.mtl"></a-asset-item>
@@ -41,14 +41,14 @@
             </a-gltf-model>
         </a-marker>
         <a-marker type="pattern" url="markers/botol.patt">
-            <a-gltf-model
+            <a-obj-model
             id="botol"
             src="#botol-glb"
             scale="2 2 2"
             position="0 0 0"
             rotation="0 0 0"
             >
-            </a-gltf-model>
+            </a-obj-model>
         </a-marker>
         <a-marker type="pattern" url="markers/tengkorak.patt">
         <a-obj-model
