@@ -10,11 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@4.0.3/dist/aframe-gesture-detector.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@4.0.3/dist/aframe-super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@4.0.3/dist/aframe-super-hands.min.js"></script>
   </head>
   
   <body>
-    <a-scene embedded arjs="debugUIEnabled: false;">
+    <a-scene embedded arjs="sourceType: webcam; sourceWidth: 640; sourceHeight: 480; displayWidth: 640; displayHeight: 480; debugUIEnabled: false;">
+    <!-- <a-scene embedded arjs="debugUIEnabled: false;"> -->
       <!-- Aset: obj + mtl -->
       <a-assets>
         <a-asset-item id="botol-glb" src="models/botol.glb"></a-asset-item>
