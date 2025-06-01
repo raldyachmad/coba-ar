@@ -6,8 +6,6 @@
     <title>UJI COBA AR</title>
     <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-gesture-detector@4.0.3/dist/aframe-gesture-detector.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-super-hands-component@4.0.3/dist/aframe-super-hands.min.js"></script>
     <style>
       body, html {
         margin: 0 !important;
@@ -27,6 +25,7 @@
         <a-asset-item id="meja-glb" src="models/meja.glb"></a-asset-item>
         <a-asset-item id="tengkorak-obj" src="models/tengkorak.obj"></a-asset-item>
         <a-asset-item id="tengkorak-mtl" src="models/tengkorak.mtl"></a-asset-item>
+        <a-asset-item id="bella-obj" src="models/bella.obj"></a-asset-item>
       </a-assets>
       
       <!-- Marker Hiro -->
@@ -51,14 +50,23 @@
             </a-gltf-model>
         </a-marker>
         <a-marker type="pattern" url="markers/tengkorak.patt">
-        <a-obj-model
-          id="tengkorak"
-          src="#tengkorak-obj"
-          mtl="#tengkorak-mtl"
-          scale="0.06 0.06 0.06"
-          position="0 0 0"
-          rotation="180 0 0"
-          ></a-obj-model>
+          <a-obj-model
+            id="tengkorak"
+            src="#tengkorak-obj"
+            mtl="#tengkorak-mtl"
+            scale="0.06 0.06 0.06"
+            position="0 0 0"
+            rotation="180 0 0"
+            ></a-obj-model>
+        </a-marker>
+        <a-marker type="pattern" url="markers/bella.patt">
+          <a-obj-model
+            id="bella"
+            src="#bella-obj"
+            scale="1 1 1"
+            position="0 0 0"
+            rotation="0 0 0"
+            ></a-obj-model>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
