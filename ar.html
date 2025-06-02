@@ -22,6 +22,7 @@
       <!-- Aset: obj + mtl -->
       <a-assets>
         <a-asset-item id="meja-glb" src="models/meja.glb"></a-asset-item>
+        <a-asset-item id="paru-glb" src="models/paru.glb"></a-asset-item>
         <a-asset-item id="tengkorak-obj" src="models/tengkorak.obj"></a-asset-item>
         <a-asset-item id="tengkorak-mtl" src="models/tengkorak.mtl"></a-asset-item>
         <a-asset-item id="tengkorak-2-obj" src="models/craneo.OBJ"></a-asset-item>
@@ -32,6 +33,16 @@
             <a-gltf-model
             id="meja"
             src="#meja-glb"
+            scale="2 2 2"
+            position="0 0 0"
+            rotation="0 0 0"
+            >
+            </a-gltf-model>
+        </a-marker>
+        <a-marker type="pattern" url="markers/paru.patt">
+            <a-gltf-model
+            id="paru"
+            src="#paru-glb"
             scale="2 2 2"
             position="0 0 0"
             rotation="0 0 0"
