@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UJI COBA AR</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.2.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script>
+      AFRAME.registerComponent("click-grow", {
+        init: function () {
+          let el = this.el;
+          let grown = false;
+          el.addEventListener("click", function () {
+            if (!grown) {
+              el.setAttribute("scale", "0.1 0.1 0.1");
+              grown = true;
+            } else {
+              el.setAttribute("scale", "0.06 0.06 0.06");
+              grown = false;
+            }
+          });
+        },
+      });
+    </script>
+    <style>
+      body, html {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden;
+        height: 100dvh;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a-scene
+      arjs="sourceType: webcam; facingMode: environment; debugUIEnabled: false;"
+      style="position: absolute; width: 100vw; height: 100vh;"
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
+    >
+      <a-assets>
+        <a-asset-item id="tengkorak-obj" src="models/tengkorak.obj"></a-asset-item>
+        <a-asset-item id="tengkorak-mtl" src="models/tengkorak.mtl"></a-asset-item>
+      </a-assets>
+
+      <a-marker type="pattern" url="markers/tengkorak.patt">
+        <a-obj-model
+          id="tengkorak"
+          src="#tengkorak-obj"
+          mtl="#tengkorak-mtl"
+          scale="0.06 0.06 0.06"
+          rotation="180 0 0"
+          click-grow
+          class="clickable"
+        ></a-obj-model>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
